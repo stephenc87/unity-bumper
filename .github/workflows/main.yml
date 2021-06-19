@@ -20,6 +20,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: game-ci/unity-test-runner@v2
+      - run: find /
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
