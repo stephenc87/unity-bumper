@@ -23,5 +23,6 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
+          unityVersion: 2020.3.9f1
           projectPath: unity-bumper-test
           githubToken: ${{ secrets.GITHUB_TOKEN }}
