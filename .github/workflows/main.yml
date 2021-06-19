@@ -23,5 +23,5 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          projectPath: unity-bumper/unity-bumper-test
+          projectPath: unity-bumper-test
           githubToken: ${{ secrets.GITHUB_TOKEN }}
