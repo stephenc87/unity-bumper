@@ -26,7 +26,8 @@ jobs:
           unityVersion: 2020.3.9f1
           projectPath: unity-bumper-test
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-      - name: List workspace dir
-      - run: echo "Name of your repo is ${{ github.repository }} and your workspace is ${{ env.GITHUB_WORKSPACE }}"
-      - run: find ${{ env.GITHUB_WORKSPACE }}
+      - name: Echo workspace dir
+        run: echo "Name of your repo is ${{ github.repository }} and your workspace is ${{ env.GITHUB_WORKSPACE }}"
+      - name: List workspace contents
+        run: find ${{ env.GITHUB_WORKSPACE }}
           
