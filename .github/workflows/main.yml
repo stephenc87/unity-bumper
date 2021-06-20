@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: manual activation of licence
+name: activate licence file
 
 # Controls when the action will run. 
 on:
