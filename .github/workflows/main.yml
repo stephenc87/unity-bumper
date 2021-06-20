@@ -18,15 +18,17 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: List files in the repository
-        run: |
-          find /
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: game-ci/unity-test-runner@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           unityVersion: 2020.3.9f1
-          run: find
           projectPath: unity-bumper-test
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v2
+      - name: List workspace dir
+        run: |
+          echo ${{ env.GITHUB_WORKSPACE }}
+      - run: echo "Name of your repo is ${{ github.repository }}"
+          
