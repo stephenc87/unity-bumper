@@ -18,6 +18,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: game-ci/unity-test-runner@v2
         env:
