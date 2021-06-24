@@ -1,4 +1,4 @@
-name: CI
+name: test build
 on:
   workflow_dispatch:
 jobs:
@@ -16,11 +16,11 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/cache@v2
         with:
-          path: unity-bumper-test/Library
-          key: Library-unity-bumper-test-Target
-          restore-keys: Library-unity-bumper-test-Target          
+          path: unity-bumper-test/Library
+          key: Library-unity-bumper-test-Target
+          restore-keys: Library-unity-bumper-test-Target
       - uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: Test results
-          path: artifacts
+        if: always()
+        with:
+          name: Test results
+          path: artifacts
