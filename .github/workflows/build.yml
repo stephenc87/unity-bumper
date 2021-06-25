@@ -5,6 +5,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         targetPlatform:
           - StandaloneOSX
@@ -18,7 +19,7 @@ jobs:
         with:
           path: unity-bumper-test/Library
           key: Library-unity-bumper-test-${{ matrix.targetPlatform }}
-          restore-keys: Library-unity-bumper-test-Target
+          restore-keys: Library-unity-bumper-test-
       - uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -28,5 +29,5 @@ jobs:
       - uses: actions/upload-artifact@v2
         if: always()
         with:
-          name: Build/${{ matrix.targetPlatform }}
+          name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
