@@ -13,7 +13,8 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          targetPlatform: WebGL          
+          path: unity-bumper-test
+          targetPlatform: Android          
           
       - uses: actions/cache@v2
         with:
