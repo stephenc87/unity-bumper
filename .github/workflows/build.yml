@@ -19,6 +19,7 @@ jobs:
         with:
           projectPath: unity-bumper-test
           targetPlatform: Android 
+          buildMethod: EditorNamespace.BuilderClassName.StaticBuildMethod
       - uses: actions/upload-artifact@v2
         if: always()
         with:
