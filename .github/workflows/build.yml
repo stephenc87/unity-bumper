@@ -4,6 +4,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        targetPlatform:
+          - StandaloneOSX
+          - StandaloneWindows64
+          - Android
     steps:
       - uses: actions/checkout@v2
         with:
@@ -11,17 +17,16 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: unity-bumper-test/Library
-          key: Library-unity-bumper-test-Target
+          key: Library-unity-bumper-test-${{ matrix.targetPlatform }}
           restore-keys: Library-unity-bumper-test-Target
       - uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           projectPath: unity-bumper-test
-          targetPlatform: Android 
-          buildMethod: EditorNamespace.BuilderClassName.StaticBuildMethod
+          targetPlatform: ${{ matrix.targetPlatform }} 
       - uses: actions/upload-artifact@v2
         if: always()
         with:
-          name: release results
-          path: artifacts
+          name: Build/${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
