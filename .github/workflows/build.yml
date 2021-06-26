@@ -23,12 +23,14 @@ jobs:
       - uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          email: ${{ secrets.ALTSPACE_USERNAME }}
-          password: ${{ secrets.ALTSPACE_PASSWORD }}
+#          email: ${{ secrets.ALTSPACE_USERNAME }}
+#          password: ${{ secrets.ALTSPACE_PASSWORD }}
+          BuildTemplateScene: Assets\Scenes\SampleScene.unity
+          targetFileName: template.zip
         with:
           projectPath: unity-bumper-test
           targetPlatform: ${{ matrix.targetPlatform }} 
-          buildMethod: AltSpace_Unity_Uploader.BuilderClassName.StaticBuildMethod
+          buildMethod: AltSpace_Unity_Uploader.AltspaceTemplateItem.buildAssetBundle
       - uses: actions/upload-artifact@v2
         if: always()
         with:
